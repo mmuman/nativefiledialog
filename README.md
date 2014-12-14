@@ -124,7 +124,7 @@ On Mac OS, add `AppKit` to the list of frameworks.
 On Windows, ensure you are linking against `comctl32.lib`.
 
 #### Haiku ####
-On Haiku, you need to link to `libtracker` and `libbe`, and make sure a `BApplication` exists before trying to call the API
+On Haiku, you need to link to `libtracker` and `libbe`.
 
 ## Usage ##
 
@@ -163,6 +163,7 @@ I accept quality code patches, or will resolve these and other matters through s
  - No support for file filter names -- ex: "Image Files" (*.png, *.jpg).  Nameless filters are supported, however.
  - GTK Zenity implementation's process exec error handling does not gracefully handle numerous error cases, choosing to abort rather than cleanup and return.
  - GTK 3 spams one warning per dialog created.
+ - On Haiku, the file open dialog either shows only allowed files or all files, which is chosen at build time.
 
 # Copyright and Credit #
 
