@@ -163,7 +163,6 @@ I accept quality code patches, or will resolve these and other matters through s
  - No support for file filter names -- ex: "Image Files" (*.png, *.jpg).  Nameless filters are supported, however.
  - GTK Zenity implementation's process exec error handling does not gracefully handle numerous error cases, choosing to abort rather than cleanup and return.
  - GTK 3 spams one warning per dialog created.
- - On Haiku, a `BApplication` is required to spawn a window. In the examples this is done with some #if's.
 
 # Copyright and Credit #
 
@@ -178,6 +177,8 @@ Tomasz Konojacki for [microutf8](http://puszcza.gnu.org.ua/software/microutf8/)
 [Denis Kolodin](https://github.com/DenisKolodin) for mingw support.
 
 [Tom Mason](https://github.com/wheybags) for Zenity support.
+
+[Puck Meerburg](https://github.com/puckipedia/nativefiledialog) for Haiku support.
 
 ## Support ##
 
