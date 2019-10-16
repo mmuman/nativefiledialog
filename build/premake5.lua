@@ -37,6 +37,8 @@ workspace "NativeFileDialog"
     platforms {"x64"}
   filter "system:windows or system:linux"
     platforms {"x64", "x86"}
+  filter "system:haiku"
+    platforms {"x86", "x64"}
   
 
   objdir(path.join(build_dir, "obj/"))
@@ -84,6 +86,9 @@ workspace "NativeFileDialog"
       language "C"
       files {root_dir.."src/nfd_cocoa.m"}
 
+    filter "system:haiku"
+      language "C++"
+      files {root_dir.."src/nfd_haiku.cpp"}
 
 
     filter {"system:linux", "options:linux_backend=gtk3"}
@@ -136,6 +141,10 @@ local make_test = function(name)
     filter {"system:macosx"}
       links {"Foundation.framework", "AppKit.framework"}
       
+    filter {"system:haiku"}
+      -- should link to stdc++.r4 for gcc2
+      links {"be", "tracker", "stdc++"}
+
     filter {"configurations:Debug", "system:linux", "options:linux_backend=gtk3"}
       linkoptions {"-lnfd_d `pkg-config --libs gtk+-3.0`"}
     filter {"configurations:Debug", "system:linux", "options:linux_backend=zenity"}
@@ -193,6 +202,7 @@ newaction
       premake_do_action("gmake", "linux", true,{})
       premake_do_action("gmake", "linux", true,{linux_backend='zenity'})
       premake_do_action("gmake", "macosx", true,{})
+      premake_do_action("gmake", "haiku", true,{})
       premake_do_action("gmake", "windows", true,{})
    end
 }
@@ -238,6 +248,7 @@ newaction
             "xcode4",
             "gmake_linux",
             "gmake_macosx",
+            "gmake_haiku",
             "gmake_windows"
         }
 
